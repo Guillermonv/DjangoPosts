@@ -1,0 +1,52 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg fixed-top" id="main_navbar" >
+
+    <div class="container">
+        <a class="navbar-brand pr-5" style="boder-right: 1px solid #efefef" href="{% url "feed" %}">
+
+            <img src="{% static "img/instagram.png"%}" height=45 class="d-inline-block align-top">
+
+        </a>
+       <div class="collaprse navbar-collapse" align="left" >
+
+           <ul class="navbar-nav mr-auto">
+               <li class="nav-item">
+                   <a href="{% url "update_profile" %}">
+                    {% if user.profiles.picture %}
+                     <img src=" {{user.profiles.picture.url}} " height="35"
+                       class="rounded-circle align-top"/>
+                    {% else %}
+                       <img src="{% static  "img/profile.png"%}" height="35"
+                       class="d-inline-block rounded-circle align-top"/>
+                   {% endif %}
+                   </a>
+
+               </li>
+               &nbsp &nbsp
+                    <li class="nav-item nav-icon">
+
+                   <a href="{% url "create_post" %}">
+                       <img src="{% static "img/add.png"%}" height="35"
+                        align-top"/>
+                       <i class="fas fa-sign-out-alt"></i>
+                   </a>
+               </li>
+               &nbsp &nbsp
+               <li class="nav-item nav-icon">
+
+                   <a href="{% url "logout" %}">
+                       <img src="{% static "img/logout.png"%}" height="35"
+                        align-top"/>
+                       <i class="fas fa-sign-out-alt"></i>
+                   </a>
+               </li>
+
+           </ul>
+
+       </div>
+    </div>
+
+</nav>
+
+</body>
+</html>
