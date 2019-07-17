@@ -10,6 +10,10 @@ from django.db.utils import IntegrityError
 from users.forms import ProfileForm
 from users.models import Profiles
 from users.forms import SignupForm
+from django.views.generic import TemplateView
+from django.views.generic import  DetailView
+from posts.models import Post
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def login_view(request):
 
@@ -19,7 +23,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user:
             login(request,user)
-            return redirect('feed')
+            return redirect('posts:feed')
         else:
             return render(request,'users/login.html',{'error':'invalid credential'})
     return render(request,'users/login.html')
@@ -27,7 +31,7 @@ def login_view(request):
 @login_required
 def logout_view(request):
     logout(request)
-    return redirect('login')
+    return redirect('users:login')
 
 
 def signup_view(request):
@@ -75,7 +79,7 @@ def update_profile(request):
             user.profiles.picture = data['picture']
             user.profiles.save()
 
-            return redirect('update_profile')
+            return redirect('users:update_profile',kwargs={'username': request.user.username})
 
     else:
         form = ProfileForm()
@@ -90,4 +94,20 @@ def update_profile(request):
         }
     )
 
+
+class UserDetailView(LoginRequiredMixin,DetailView):
+
+    template_name = 'users/detail.html'
+    slug_field = 'username'
+   # parametro de url.py <str>
+    slug_url_kwarg = 'username'
+    queryset = User.objects.all()
+
+    content_object_name ='user'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.get_object()
+        context['posts'] = Post.objects.filter(user=user).order_by('-created')
+        return  context
 

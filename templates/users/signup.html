@@ -8,7 +8,7 @@
 <p class="alert alert-danger">{{error}}</p>
 {% endif %}
 <span class="border-bottom-0">
-   <form action="{%url 'signup'%}" method="POST">
+   <form action="{%url 'users:signup'%}" method="POST">
  {% csrf_token %}
        <div class="form-group">
            <input class="form-control" type="text" name="username" placeholder="Username" required="true">
