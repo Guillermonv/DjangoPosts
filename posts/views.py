@@ -3,10 +3,12 @@ from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import render ,redirect
 import os
-
+from comments.forms import CommentForm
+from users.forms import ProfileForm
 from posts.forms import PostForm
 # Create your views here.
 from posts.models import Post
+#from comment.models import Comment
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,13 +22,21 @@ def renderize(request):
 from posts.models import User
 @login_required()
 def create_post(request):
+    print('!!!!!!!!!!!')
+    for key, value in request.POST.items():
+        print('Key: %s' % (key))
+        # print(f'Key: {key}') in Python >= 3.7
+        print('Value %s' % (value))
+
     """Create new post view."""
-    if request.method == 'POST':
-        form = PostForm(request.POST, request.FILES)
-        if form.is_valid():
-            print('VAAAAAALLIDDD')
-            form.save()
-            return redirect('posts:feed')
+
+    form = PostForm(request.POST, request.FILES)
+    print(form.fields)
+    if form.is_valid():
+
+        print('VAAAAAALLIDDD')
+        form.save()
+        return redirect('posts:feed')
 
     else:
         form = PostForm()
@@ -38,5 +48,35 @@ def create_post(request):
             'form': form,
             'user': request.user,
             'profiles': request.user.profiles
-        }
-    )
+        })
+
+from django.core.mail import send_mail
+
+def comment_new(request):
+    if request.method == 'POST':   
+        message = request.POST['comment']
+        subject = request.POST['title']
+        send_mail(subject, message, 'guillermo.varelli@gmail.com',
+            ['guillermo.varelli@darwoft.com'], fail_silently=False)
+
+    
+"""
+para hacer trend de mensajes 
+from django.shortcuts import get_object_or_404
+
+
+def comment_new(request, pk):
+    Update a user's profile view.
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+            return redirect('feed')
+    else:
+        form = CommentForm()
+    return render(request, 'blog/add_comment_to_post.html', {'form': form})
+"""
+

@@ -1,2 +1,0 @@
-# DjangoPosts
-Create Django posts

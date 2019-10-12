@@ -63,7 +63,9 @@ nuevo usando el forms Signup Form NO ANDA VER USER FORM.PY ver DEFs
 """
 
 def update_profile(request):
+
     """Update a user's profile view."""
+
     user = request.user
 
     if request.method == 'POST':
@@ -99,7 +101,7 @@ class UserDetailView(LoginRequiredMixin,DetailView):
 
     template_name = 'users/detail.html'
     slug_field = 'username'
-   # parametro de url.py <str>
+   # parametro de urls.py <str>
     slug_url_kwarg = 'username'
     queryset = User.objects.all()
 
@@ -111,3 +113,8 @@ class UserDetailView(LoginRequiredMixin,DetailView):
         context['posts'] = Post.objects.filter(user=user).order_by('-created')
         return  context
 
+@login_required
+def scores(request):
+   # import pdb; pdb.set_trace()
+    users = User.objects.all().order_by('-created')
+    return render(request, os.path.join(BASE_DIR,'templates','users','score.html'), {'users': users})

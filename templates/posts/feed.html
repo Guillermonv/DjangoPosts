@@ -7,32 +7,81 @@
 {% block container %}
     <div class="container">
         <div class="row">
-
             {% for post in posts %}
             <div class="col-sm-12 col-md-8 offset-md-4 mt-5 p-0 post-container">
                 <div class="media pt-3 pl-3 pb-1">
                <a href="{% url "users:detail" post.user.username%}">
                     <img class="mr-3 rounded-circle" height="35" src="{{ post.profile.picture.url }}" alt="{{ post.user.username }}">
                 </a>
-                           <p class="ml-2 mt-0 mb-2">
-                    <b>{{ post.title }}</b>
-                </p>
-
+               
+                <p style="width: 45%;"> {{ post.title }}  {{ post.title }}</p>
                 </div>
 
-                <img style="width: 300; heigth:400" src="{{ post.photo.url }}" alt="{{ post.title }}">
+                <img style="width: 50%; heigth:60%" src="{{ post.photo.url }}" alt="{{ post.title }}">
 
                 <div class="media-body">
-                       <b> <p style="margin-top: 5px;">@{{ post.user.username  }} - <small>{{ post.created }}</small> </p></b>
-                <p class="mt-1 ml-2" >
+                       <b> <p style="margin-top: 5px;">@{{ post.user.username  }} - <small>{{ post.created }}</small> 
+               &nbsp;&nbsp;
                     <a href="" style="color: #000; font-size: 20px;">
                         <i class="far fa-heart"></i>
-                    </a> 30 likes
-                </p>
+                    </a>
+                    <br>
+                </p></b>
+                
+
+
                 </div>
 
+<!--
+    <hr>
+    {% for comment in post.comments.all %}
+    <div class="comment">
+        <div class="date">{{ comment.created_date }}</div>
+        <strong>{{ comment.author }}</strong>
+        <p>{{ comment.text|linebreaks }}</p>
+    </div>
+{% empty %}
+    <p>No comments here yet :(</p>
+{% endfor %}
+
+
+
+
+
+
+
             </div>
-            {% endfor %}
+llamar a comment_mew -->
+
+              <form action="{% url 'posts:comment_new' %}" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                          <input
+                            class="form-control {% if form.title.errors %}is-invalid{% endif %}"
+                            type="hidden"
+                            name="title"
+                            value="{{post.title}}"
+                            size="16"
+                        >
+                        
+                        <textarea rows="5" cols="50" name="comment"  style="width:50%;"
+                        value="{{ comments.comment }}" class="form-control" ></textarea>
+                        
+                         <!--   
+                           <input
+                            class="form-control {% if form.title.errors %}is-invalid{% endif %}"
+                            type="text"
+                            name="comment"
+                            placeholder="Comment"
+                            size="40"
+                            align="center"
+                            value="{{ comments.comment }}"
+                    /> -->
+                         </div>
+                         <br>
+                <button type="submit" style="width:35%; display:block;margin:0 auto;" class="btn btn-outline-info btn-lg">Publish</button>
+            
+                     </form>            {% endfor %}
         </div>
     </div>
 {% endblock %}

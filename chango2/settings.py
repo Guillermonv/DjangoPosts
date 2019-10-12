@@ -38,8 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_mysql',
     'users',
-    'posts'
+    'posts',
+    'comments',
 ]
 
 MIDDLEWARE = [
@@ -51,8 +53,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
+
   #  'chango2.middelware.ProfileCompletionMiddelware',
 ]
+
+libraries: {
+    'tags': 'tags',
+
+}
 
 ROOT_URLCONF = 'chango2.urls'
 
@@ -67,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
             ],
         },
     },
@@ -80,8 +89,13 @@ WSGI_APPLICATION = 'chango2.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'chango2',
+        'USER': 'root',
+        'PASSWORD': '1s4b3ll4',
+        'HOST': 'localhost',
+        'PORT': '3306',
+
     }
 }
 
@@ -117,6 +131,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+APPEND_SLASH = True
+
 
 
 # Static files (CSS, JavaScript, Images)
@@ -131,3 +147,10 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL ='/media/'
 LOGIN_URL = 'users/login'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # since you are using a gmail account
+EMAIL_PORT = 587  # Gmail SMTP port for TLS
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'guillermo.varelli@gmail.com'
+EMAIL_HOST_PASSWORD = '!S@b3ll4Va'

@@ -1,22 +1,24 @@
-{% extends "users\base.html" %}
+{% extends "base.html" %}
+<head>
 
+</head>
 {% block head_content %}
 <title>Create new post</title>
 {% endblock %}
 
 {% block container %}
 
-    <div class="container">
-        <div class="row justify-content-md-center" style="width=300" >
+    <div class="container" style="width=50%">
+        <div class="row justify-content-md-center" style="width=50%" >
             <div class="col-12 pt-3 pb-3" id="profile-box">
                 <h4 class="mb-4">Post a new photo!</h4>
 
-                <form method="POST" enctype="multipart/form-data">
+                <form method="POST" enctype="multipart/form-data" style="width=50%">
                     {% csrf_token %}
 
                     <input type="hidden" name="user" value="{{ user.pk}}" />
                     <input type="hidden" name="profile" value="{{ profiles.pk }}" />
-
+                    <input type="hidden" name="post" value="1" />
                     {# Website field #}
                     <div class="form-group">
                         <input
@@ -44,8 +46,9 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-block mt-5">Publish!</button>
+                    <button type="submit" style="width:100%; display:block;margin:0 auto;" class="btn btn-outline-info btn-lg">Publish!</button>
                 </form>
+
             </div>
         </div>
     </div>

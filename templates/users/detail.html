@@ -17,15 +17,13 @@
                     {% if request.user.username == user.username %}
                         <a
                             href="{% url "users:update_profile" %}"
-                            class="ml-5 btn btn-sm btn-outline-info"
-                        >
+                            class="ml-5 btn btn-sm btn-outline-info" >
                             Edit profile
                         </a>
                     {% else %}
                         <a
                             href=""
-                            class="ml-5 btn btn-sm btn-primary"
-                        >
+                            class="ml-5 btn btn-sm btn-primary">
                             Follow
                         </a>
                     {% endif %}

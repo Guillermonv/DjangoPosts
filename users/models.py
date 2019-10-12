@@ -8,7 +8,7 @@ class Profiles(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     website = models.URLField(max_length=100, blank=True)
-    bio = models.CharField(max_length=100, blank=True, null=True)
+    bio = models.CharField(max_length=1000, blank=True, null=True)
    # tittle = models.CharField(max_length=100, blank=True, null=True, default="TEST")
     phone_number = models.CharField(max_length= 20, blank=True)
     picture = models.ImageField(upload_to='users/picture',
