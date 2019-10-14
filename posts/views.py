@@ -80,3 +80,6 @@ def comment_new(request, pk):
     return render(request, 'blog/add_comment_to_post.html', {'form': form})
 """
 
+
+def stats(request):
+   return render(request,"stats.html")

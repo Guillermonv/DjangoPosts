@@ -1,10 +1,11 @@
 {% load static %}
-<nav class="navbar navbar-expand-lg fixed-top" style="overflow: hidden;
+
+<nav class="navbar-expand-lg fixed-top" style="overflow: hidden;
 background-color:#D3D3D3;
 position: fixed;
 top: 0;
 opacity: .5;
-height: 4%;
+height: 30px;
 width: 100%;" id="main_navbar" >
 
     <div class="container">
@@ -14,7 +15,7 @@ width: 100%;" id="main_navbar" >
      <span>
           <p>
               <a href="{% url "posts:feed" %}">
-            <img src="{% static "img/instagram.png"%}" height=32 class="d-inline-block rounded-circle align-top">
+            <img src="{% static "img/instagram.png"%}" height="22" class="d-inline-block rounded-circle align-top">
               </a>
         </p>
      </span>
@@ -22,10 +23,10 @@ width: 100%;" id="main_navbar" >
                <li class="nav-item">
                    <a href="{% url "users:detail" request.user.username%}">
                     {% if user.profiles.picture %}
-                     <img src=" {{user.profiles.picture.url}} " height="32"
+                     <img src=" {{user.profiles.picture.url}} " height="22"
                        class="rounded-circle align-top"/>
                     {% else %}
-                       <img src="{% static  "img/profile.png"%}" height="32"
+                       <img src="{% static  "img/profile.png"%}" height="22"
                        class="d-inline-block rounded-circle align-top"/>
                    {% endif %}
                    </a>
@@ -34,23 +35,23 @@ width: 100%;" id="main_navbar" >
                &nbsp &nbsp
                     <li class="nav-item nav-icon">
                             <a href="{% url "posts:create_post" %}">
-                                    <span class="glyphicon glyphicon-circle-arrow-up" style="font-size:32px"></span>
+                                    <span class="glyphicon glyphicon-circle-arrow-up text-success" style="font-size:22px"></span>
                     </a>
                </li>
                &nbsp &nbsp
                <li class="nav-item nav-icon">
-                    <a href="#">
-                            <span class="glyphicon glyphicon-stats" style="font-size:30px"></span>
+                    <a href="{% url "posts:post_stats" %}">
+                            <span class="glyphicon glyphicon-stats text-success" style="font-size:20px"></span>
             </a>
             &nbsp &nbsp
             <li class="nav-item nav-icon">
                     <a href="#">
-                            <span class="glyphicon glyphicon-envelope" style="font-size:32px"></span>
+                            <span class="glyphicon glyphicon-envelope text-success" style="font-size:22px"></span>
             </a>
             &nbsp &nbsp
             <li class="nav-item nav-icon">
                     <a href="{% url "users:logout" %}">
-                            <span class="glyphicon glyphicon-log-out" style="font-size:32px"></span>
+                            <span class="glyphicon glyphicon-log-out text-danger" style="font-size:22px"></span>
             </a>
             
 
