@@ -25,7 +25,7 @@ SECRET_KEY = 'ie2*!82$#zd)w0w!^m=q#tkf%vdobrvg1(0o4kq@re3%u*f)s5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ec2-54-207-55-15.sa-east-1.compute.amazonaws.com']
 
 
 # Application definition
@@ -67,7 +67,12 @@ ROOT_URLCONF = 'chango2.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        #'DIRS': ['ec2-54-207-55-15.sa-east-1.compute.amazonaws.com' + os.path.join(BASE_DIR,'templates')],
+        #'DIRS': ['templates'],
+        #'DIRS': [BASE_DIR + "/templates", ],
+        #'DIRS' : ['ec2-54-207-55-15.sa-east-1.compute.amazonaws.com/home/ubuntu/DjangoPosts/templates/'],
+        'DIRS' : [os.path.join(BASE_DIR, 'templates')],
+        #'DIRS' :[],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -91,9 +96,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'chango2',
-        'USER': 'root',
+        'USER': 'admin',
         'PASSWORD': '1s4b3ll4',
-        'HOST': 'localhost',
+        'HOST': 'database-djangopost.ccuweqklkiiu.sa-east-1.rds.amazonaws.com',
         'PORT': '3306',
 
     }

@@ -21,7 +21,7 @@ width: 100%;" id="main_navbar" >
      </span>
      &nbsp &nbsp
                <li class="nav-item">
-                   <a href="{% url "users:detail" request.user.username%}">
+                     <a href="{% url "users:detail" request.user.username%}">
                     {% if user.profiles.picture %}
                      <img src=" {{user.profiles.picture.url}} " height="22"
                        class="rounded-circle align-top"/>

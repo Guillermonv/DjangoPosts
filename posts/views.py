@@ -58,6 +58,8 @@ def comment_new(request):
         subject = request.POST['title']
         send_mail(subject, message, 'guillermo.varelli@gmail.com',
             ['guillermo.varelli@darwoft.com'], fail_silently=False)
+    posts = Post.objects.all().order_by('-created')
+    return render(request, os.path.join(BASE_DIR,'templates','posts','feed.html'), {'posts': posts})
 
     
 """
@@ -72,7 +74,8 @@ def comment_new(request, pk):
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
-            comment.post = post
+
+comment.post = post
             comment.save()
             return redirect('feed')
     else:
