@@ -9,6 +9,7 @@ from posts.forms import PostForm
 # Create your views here.
 from posts.models import Post
 #from comment.models import Comment
+from django.core.exceptions import PermissionDenied
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -24,12 +25,16 @@ from posts.models import User
 def create_post(request):
     print('!!!!!!!!!!!')
     for key, value in request.POST.items():
+        if(key == 'user'):            
+            if(str(value) not in ['8','1']):
+                raise PermissionDenied()
         print('Key: %s' % (key))
         # print(f'Key: {key}') in Python >= 3.7
         print('Value %s' % (value))
 
-    """Create new post view."""
-
+    """Create new post view."""            
+  #  if(request.POST['user'] != 0):
+   #   raise Exception('general exceptions not caught by specific handling')
     form = PostForm(request.POST, request.FILES)
     print(form.fields)
     if form.is_valid():
