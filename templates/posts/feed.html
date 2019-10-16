@@ -14,7 +14,10 @@
                     <img class="mr-3 rounded-circle" height="35" src="{{ post.profile.picture.url }}" alt="{{ post.user.username }}">
                 </a>
                
-                <p style="width: 45%;"> {{ post.title }}  {{ post.title }}</p>
+                <p style="width: 45%;"> <b>{{ post.title }}  {{ post.title }}</b><br>
+                <br>
+                 {{ post.desc }}  {{ post.desc }}</p>
+               
                 </div>
 
                 <img style="width: 50%; heigth:60%" src="{{ post.photo.url }}" alt="{{ post.title }}">
@@ -64,6 +67,13 @@ llamar a comment_mew -->
                             size="16"
                         >
                         
+                        <input
+                        class="form-control {% if form.title.errors %}is-invalid{% endif %}"
+                        type="hidden"
+                        name="username"
+                        value="{{post.user.username}}"
+                        size="16"
+                    >
                         <textarea rows="5" cols="50" name="comment"  style="width:50%;"
                         value="{{ comments.comment }}" class="form-control" ></textarea>
                         

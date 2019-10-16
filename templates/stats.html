@@ -5,7 +5,12 @@
 {% endblock%}
 
 {% block container %}
-<br><br><br>
+<div style="width: 40%; height: 5%;  float:left;"><h2><i>Current Month</i></h2></div>
+<div style="width: 60%; height: 5%; float:right;"><h2><i>Winners of Previous Month</i></h2></div>
+<br>
+<br>
+<br>
+<br>
 <div>
 <table style="float: left ;width: 40%;"class="table table-hover">
   <thead>
@@ -70,7 +75,8 @@
   </tbody>
 </table>
 &nbsp;&nbsp;&nbsp;&nbsp;
-<table style="float: left ;width: 40%;" class="table table-hover">
+
+<table name="test" style="float: left ;width: 40%;" class="table table-hover">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -98,4 +104,28 @@
   </tbody>
 </table>
 </div>
+
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+  <a class="btn btn-default" style="color:red; position: relative;" href="textview" id="totestarrow">
+     <span style="font-size:10em;" class="glyphicon glyphicon-comment text-success">ju</span>
+     <span class='centered-text'>
+       Til testene
+    </span>
+     
+  </a>
+</div>
+<style>
+.centered-text {
+   /* This will cause your element to be positioned freely over it's container */
+   position: absolute;
+   /* This will bring the element roughly halfway down the existing element */ 
+   top: 47%;  
+   /* Colored white to stand out */
+   color: white;
+   /* The following styles will center the element in it's container */
+   text-align: center;
+   left: 0;
+   width: 100%;
+}
+</style>
 {% endblock %}

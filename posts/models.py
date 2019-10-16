@@ -17,6 +17,8 @@ class Post(models.Model):
 
     profile = models.ForeignKey('users.Profiles', on_delete=models.CASCADE,null=True,default=1,blank=True)
     title = models.CharField(max_length=100, blank=True, null=True)
+    desc = models.CharField(max_length=1000, blank=True, null=True)
+   
     photo = models.ImageField(upload_to='posts/photos')
 
     created = models.DateTimeField(auto_now_add=True)

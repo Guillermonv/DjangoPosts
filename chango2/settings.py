@@ -25,7 +25,7 @@ SECRET_KEY = 'ie2*!82$#zd)w0w!^m=q#tkf%vdobrvg1(0o4kq@re3%u*f)s5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ec2-54-207-55-15.sa-east-1.compute.amazonaws.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -96,10 +96,14 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'chango2',
-        'USER': 'admin',
+        'USER': 'root',
         'PASSWORD': '1s4b3ll4',
-        'HOST': 'database-djangopost.ccuweqklkiiu.sa-east-1.rds.amazonaws.com',
+        'HOST': 'localhost',
         'PORT': '3306',
+        #'USER': 'admin',
+        #'PASSWORD': '1s4b3ll4',
+        #'HOST': 'database-djangopost.ccuweqklkiiu.sa-east-1.rds.amazonaws.com',
+        #'PORT': '3306',
 
     }
 }

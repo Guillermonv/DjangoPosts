@@ -56,7 +56,8 @@ def comment_new(request):
     if request.method == 'POST':   
         message = request.POST['comment']
         subject = request.POST['title']
-        send_mail(subject, message, 'guillermo.varelli@gmail.com',
+        user = request.POST['username']
+        send_mail("[ENGLISH] " + subject,user + " Says : "+ message, 'guillermo.varelli@gmail.com',
             ['guillermo.varelli@darwoft.com'], fail_silently=False)
     posts = Post.objects.all().order_by('-created')
     return render(request, os.path.join(BASE_DIR,'templates','posts','feed.html'), {'posts': posts})
@@ -86,3 +87,6 @@ comment.post = post
 
 def stats(request):
    return render(request,"stats.html")
+
+def hilarious(request):
+   return render(request,"hilarious.html")
