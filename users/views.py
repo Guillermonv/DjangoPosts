@@ -81,7 +81,7 @@ def update_profile(request):
             user.profiles.picture = data['picture']
             user.profiles.save()
 
-            return redirect('users:update_profile',kwargs={'username': request.user.username})
+            return redirect('users/update_profile.html')
 
     else:
         form = ProfileForm()

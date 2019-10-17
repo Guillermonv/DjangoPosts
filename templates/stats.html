@@ -1,12 +1,16 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block head_content %}
     <title>Darwoft</title>
 {% endblock%}
-
 {% block container %}
-<div style="width: 40%; height: 5%;  float:left;"><h2><i>Current Month</i></h2></div>
-<div style="width: 60%; height: 5%; float:right;"><h2><i>Winners of Previous Month</i></h2></div>
+<body id="bg" style="background-position: center center; background-attachment: fixed;
+background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/back.png"%}') ";>
+</body>
+
+<div style="width: 40%; height: 5%;  float:left;"><h3><i>Current month</i></h3></div>
+<div style="width: 60%; height: 5%; float:right;"><h3><i>Winners of revious Month</i></h3></div>
 <br>
 <br>
 <br>
@@ -16,61 +20,61 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Name</th>
+      <th scope="col">Score</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th scope="row">1</th>
-      <td>Mark</td>
-      <td>@mdo</td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <th scope="row">2</th>
-      <td>Jacob</td>
+      <td> </td>
 
-      <td>@fat</td>
+      <td>  </td>
     </tr>
     <tr>
       <th scope="row">3</th>
-      <td>Jacob</td>
-      <td>@fat</td>
+      <td> </td>
+      <td>  </td>
     </tr>
     <tr>
       <th scope="row">4</th>
-      <td>Mark</td>
-      <td>@mdo</td>
+      <td>  </td>
+      <td>  </td>
     </tr>
     <tr>
       <th scope="row">5</th>
-      <td>Mark</td>
-      <td>@mdo</td>
+      <td>  </td>
+      <td>  </td>
     </tr>
     <tr>
       <th scope="row">6</th>
-      <td>Mark</td>
-      <td>@mdo</td>
+      <td>  </td>
+      <td>  </td>
     </tr>
     <tr>
       <th scope="row">7</th>
-      <td>Mark</td>
-      <td>@mdo</td>
+      <td>  </td>
+      <td>  </td>
     </tr>
     <tr>
       <th scope="row">8</th>
-      <td>Mark</td>
-      <td>@mdo</td>
+      <td>  </td>
+      <td>  </td>
     </tr>
     <tr>
       <th scope="row">9</th>
-      <td>Mark</td>
-      <td>@mdo</td>
+      <td>  </td>
+      <td>  </td>
     </tr>
     <tr>
       <th scope="row">10</th>
-      <td>Mark</td>
-      <td>@mdo</td>
+      <td>  </td>
+      <td>  </td>
     </tr>
   </tbody>
 </table>
@@ -80,52 +84,28 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Name</th>
+      <th scope="col">Score</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th scope="row">1</th>
-      <td>Mark</td>
-      <td>@mdo</td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <th scope="row">2</th>
-      <td>Jacob</td>
+      <td> </td>
 
-      <td>@fat</td>
+      <td>  </td>
     </tr>
     <tr>
       <th scope="row">3</th>
-      <td>Jacob</td>
-      <td>@fat</td>
+      <td> </td>
+      <td>  </td>
     </tr>
   </tbody>
 </table>
 </div>
-
-<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-  <a class="btn btn-default" style="color:red; position: relative;" href="textview" id="totestarrow">
-     <span style="font-size:10em;" class="glyphicon glyphicon-comment text-success">ju</span>
-     <span class='centered-text'>
-       Til testene
-    </span>
-     
-  </a>
-</div>
-<style>
-.centered-text {
-   /* This will cause your element to be positioned freely over it's container */
-   position: absolute;
-   /* This will bring the element roughly halfway down the existing element */ 
-   top: 47%;  
-   /* Colored white to stand out */
-   color: white;
-   /* The following styles will center the element in it's container */
-   text-align: center;
-   left: 0;
-   width: 100%;
-}
-</style>
 {% endblock %}
