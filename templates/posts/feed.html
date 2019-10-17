@@ -6,6 +6,8 @@
 {% endblock%}
 
 <style>
+    zoom: 100%;
+
 #bg{
     background-size: 1800px 900px;
     background-repeat: no-repeat;
@@ -14,7 +16,7 @@
 }
 </style>
 {% block container %}
-<body id="bg" style="background-position: center center; background-attachment: fixed;
+<body id="bg" style="zoom: 85%; background-position: center center; background-attachment: fixed;
 background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/back.png"%}') ";>
     <div style="background-image: url({% static 'static/img/back.png' %});" >
 
