@@ -1,28 +1,31 @@
 {% extends "users/base.html" %}
+{% load static %}
 
 {% block head_content %}
 <title>sign in</title>
 {% endblock%}
 
 {% block container %}
-
+<body id="bg" style="zoom: 85%; background-position: center center; background-attachment: fixed;
+background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/back.png"%}') ";>´
+</body>
     {% if error %}
         <p class="alert alert-danger">{{ error }}</p>
     {% endif%}
 
-    <form method="POST" action="{% url "users:login" %}">
+    <form method="POST" action="{% url "users:login" %}" >
         {% csrf_token %}
 
         <div class="form-group">
-            <input class="form-control" type="text" placeholder="Username" name="username" />
+            <input  style="width:50%; display:block;margin:0 auto;" class="form-control" type="text" placeholder="Username" name="username" />
         </div>
 
         <div class="form-group">
-            <input class="form-control" type="password" placeholder="Password" name="password" />
+            <input style="width:50%; display:block;margin:0 auto;" class="form-control" type="password" placeholder="Password" name="password" />
         </div>
 
 
-     <button type="submit" style="width:100%; display:block;margin:0 auto;" class="btn btn-outline-info btn-lg">Sign in</button>
+     <button type="submit" style="width:50%; display:block;margin:0 auto;" class="btn btn-outline-info btn-lg">Sign in</button>
            
 
     </form>

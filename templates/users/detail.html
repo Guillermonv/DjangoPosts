@@ -1,9 +1,12 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block head_content %}
 <title>@{{ request.user.username }} | Platzigram</title>
 {% endblock %}
-
+<body id="bg" style="zoom: 85%; background-position: center center; background-attachment: fixed;
+background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/back.png"%}') ";>´
+</body>
 {% block container %}
 
     <div class="container mb-5" style="margin-top: 8em;">
