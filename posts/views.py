@@ -62,7 +62,7 @@ def comment_new(request):
         message = request.POST['comment']
         subject = request.POST['title']
         user = request.POST['username']
-        send_mail("[ENGLISH] " + subject,user + " Says : "+ message + " on http://english.darwoft.com:8000", 'guillermo.varelli@gmail.com',
+        send_mail("[ENGLISH] " + subject,user + " said  "+ message + " on http://english.darwoft.com:8000", 'guillermo.varelli@gmail.com',
             ['guillermo.varelli@darwoft.com'], fail_silently=False)
     posts = Post.objects.all().order_by('-created')
     return render(request, os.path.join(BASE_DIR,'templates','posts','feed.html'), {'posts': posts})
