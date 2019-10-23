@@ -24,8 +24,8 @@ from users import views as userview
 
 
 urlpatterns = [
+     path('accounts/', include('allauth.urls')), 
     path('admin/', admin.site.urls),
-
     path('', include(('posts.urls', 'posts'), namespace='posts')),
     path('users/', include(('users.urls', 'users'), namespace='users')),
     #path('comments', include(('comments.urls', 'comments'), namespace='comments'))

@@ -6,9 +6,15 @@
 {% endblock%}
 
 {% block container %}
+
 <body id="bg" style="zoom: 85%; background-position: center center; background-attachment: fixed;
 background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/back.png"%}') ";>´
 </body>
+
+<!-- templates/home.html -->
+{% load socialaccount %}
+
+
     {% if error %}
         <p class="alert alert-danger">{{ error }}</p>
     {% endif%}
@@ -30,6 +36,6 @@ background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/b
 
     </form>
 
-    <p class="mt-4">Don't have an account yet? <a href="{% url "users:signup" %}">Sign up here.</a></p>
+    <p class="mt-4">Don't have an account yet? <a href="{% provider_login_url 'google' %}">Sign up here.</a></p>
 
 {% endblock %}

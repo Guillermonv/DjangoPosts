@@ -42,6 +42,12 @@ INSTALLED_APPS = [
     'users',
     'posts',
     'comments',
+    'django.contrib.sites', # new
+
+    'allauth', # new
+    'allauth.account', # new
+    'allauth.socialaccount', # new
+    'allauth.socialaccount.providers.google', # new
 ]
 
 MIDDLEWARE = [
@@ -85,6 +91,19 @@ TEMPLATES = [
         },
     },
 ]
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.contrib.messages.context_processors.messages',
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
+)
+
 
 WSGI_APPLICATION = 'chango2.wsgi.application'
 
@@ -163,3 +182,22 @@ EMAIL_PORT = 587  # Gmail SMTP port for TLS
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'guillermo.varelli@gmail.com'
 EMAIL_HOST_PASSWORD = '!S@b3ll4Va'
+
+
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+SITE_ID = 1
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '277837821889-o437h1fdd5e66dr06rk0u1rgv66ulptn.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'zGxyV3DQIS4y6zC2Kzu1Uv-i'
+LOGIN_URL = '/users/login'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/users/login'
