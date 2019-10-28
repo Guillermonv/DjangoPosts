@@ -38,7 +38,6 @@ def create_post(request):
     form = PostForm(request.POST, request.FILES)
     print(form.fields)
     if form.is_valid():
-
         print('VAAAAAALLIDDD')
         form.save()
         return redirect('posts:feed')
@@ -61,8 +60,11 @@ def comment_new(request):
     if request.method == 'POST':   
         message = request.POST['comment']
         subject = request.POST['title']
-        user = request.POST['username']
-        send_mail("[ENGLISH] " + subject,user + " said  "+ message + " on http://english.darwoft.com:8000", 'guillermo.varelli@gmail.com',
+        user = request.POST['first_name']
+        last_name = request.POST['last_name']
+        #lastname = request.POST['lastname']
+    
+        send_mail("[ENGLISH] " + subject,user +" "+ last_name + " said  "+ message + " on http://english.darwoft.com:8000", 'guillermo.varelli@gmail.com',
             ['guillermo.varelli@darwoft.com'], fail_silently=False)
     posts = Post.objects.all().order_by('-created')
     return render(request, os.path.join(BASE_DIR,'templates','posts','feed.html'), {'posts': posts})
