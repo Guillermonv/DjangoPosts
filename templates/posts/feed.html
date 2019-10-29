@@ -20,24 +20,22 @@
 background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/back.png"%}') ";>
     <div style="background-image: url({% static 'static/img/back.png' %});" >
 
-        <div class="row">
+        <div class="row"style= "align:center">
             {% for post in posts %}
-            <div class="col-sm-12 col-md-8 offset-md-4 mt-5 p-0 post-container">
-                <div class="media pt-3 pl-3 pb-1">
-               <a href="{% url "users:detail" post.user.username%}">
-                    <img class="mr-3 rounded-circle" height="35" src="{{ post.profile.picture.url }}" alt="{{ post.user.username }}">
-                </a>
-               
-                <p style="width: 45%;"> <b>{{ post.title }}  {{ post.title }}</b>
-                </p>
-               
-                </div>
-                <div class="media pt-3 pl-3 pb-1">
-                      <p style="width: 45%;"> 
-                          {{ post.desc }}  {{ post.desc }}</p>
-                        
-                </div>
-         
+            <div class="col-sm-12 col-md-8 offset-md-4 mt-5 p-0 post-container,width:50%;">
+                    <div class="card" style="width: 32rem;width:50%;">
+                        <div class="card-body">
+                            <div class="media pt-3 pl-3 pb-1">
+                                <a href="{% url "users:detail" post.user.username%}">
+                                    <img class="mr-3 rounded-circle" height="35" src="{{ post.profile.picture.url }}" alt="{{ post.user.username }}">
+                                </a>    
+                                <h3 class="card-title">{{ post.title }}</h3>                                                                
+                            </div>
+                                                 
+                                    <p class="card-text">{{ post.desc }}</p>                                                               
+                            
+                        </div>
+                    </div>
                 <img style="width: 50%; heigth:60%" src="{{ post.photo.url }}" alt="{{ post.title }}">
 
                 <div class="media-body">
@@ -114,7 +112,8 @@ llamar a comment_mew -->
                     /> -->
                          </div>
                          <br>
-                <button type="submit" style="width:35%; display:block;margin:0 auto;" class="btn btn-outline-info btn-lg">Publish</button>
+                         
+                <button type="submit" style="width:35%; display:block;margin:auto;" class="btn btn-outline-info btn-lg">Publish</button>
             
                      </form>            {% endfor %}
         </div>
