@@ -6,6 +6,7 @@ apt-get install python3-venv <br>
 python3 -m venv env <br>
 source env/bin/activate<br>
 sudo apt install python3-pip<br>
+pip install django-allauth<br>
 pip3 install django<br>
 git clone https://github.com/Guillermonv/DjangoPosts.git<br>
 sudo apt install gunicorn<br>
