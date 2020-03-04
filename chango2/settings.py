@@ -114,20 +114,16 @@ WSGI_APPLICATION = 'chango2.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'chango2',
-        'USER': 'root',
+        'NAME': '1s4',
         'PASSWORD': '1s4b3ll4',
-        'HOST': 'localhost',
+        #'HOST': 'localhost',
         'PORT': '3306',
-        #'USER': 'admin',
-        #'PASSWORD': '1s4b3ll4',
-        #'HOST': 'database-djangopost.ccuweqklkiiu.sa-east-1.rds.amazonaws.com',
-        #'PORT': '3306',
+        'USER': 'admin',
+        'HOST': 'database-1.cf8l9xy80cyd.us-east-2.rds.amazonaws.com',
+
 
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 

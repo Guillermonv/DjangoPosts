@@ -7,5 +7,5 @@ class CommentForm(forms.ModelForm):
 
     class Meta:
         """form settings"""
-        #model = Comment
-        #fields = ('user','comments',)
+        model = Comment
+        fields = ('user','username','post','comment',)
