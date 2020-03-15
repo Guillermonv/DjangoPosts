@@ -115,11 +115,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': '1s4',
-        'PASSWORD': '1s4b3ll4',
-        #'HOST': 'localhost',
+       'PASSWORD': '1s4b3ll4',
+        'HOST': 'localhost',
         'PORT': '3306',
-        'USER': 'admin',
-        'HOST': 'database-1.cf8l9xy80cyd.us-east-2.rds.amazonaws.com',
+        'USER': 'root',
+       # 'HOST': 'database-1.cf8l9xy80cyd.us-east-2.rds.amazonaws.com',
 
 
     }

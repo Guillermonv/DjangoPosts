@@ -1,26 +1,21 @@
 from django.db import models
-#from posts.models import Post
+
+from posts.models import Post as Post
 from django.contrib.auth.models import User
 # Create your models here.
 
-
 class Comment(models.Model):
-    """
-    #id= models.AutoField(max_length=1000, blank=True)
+    post = models.ForeignKey(Post,on_delete=models.CASCADE, null=True, default=1, blank=True)
+    name = models.CharField(max_length=20,blank=True, null=True)
+    email = models.EmailField(max_length=20,blank=True, null=True)
+    body = models.TextField(max_length=200,blank=True, null=True)
+    created = models.DateTimeField(auto_now_add=True,blank=True, null=True)
+    updated = models.DateTimeField(auto_now=True,blank=True, null=True)
+    active = models.BooleanField(default=True,blank=True, null=True)
 
-    # post = models.ForeignKey(Post, related_name='',on_delete=models.CASCADE,default=0)
-    """
+    class Meta:
+        ordering = ('created',)
 
-    #comment = models.ForeignKey('posts.Post', related_name='posts_rel', to_field="comments", db_column="comments",
-     #                           on_delete=models.CASCADE, null=True, default=1, blank=True)
-    post = models.IntegerField(blank=True,null=True,unique=True,default=0)
-    user = models.ForeignKey(User, on_delete=models.CASCADE,default=0,null=True)
-    username = models.CharField(blank=True, null=True, unique=True ,max_length=200)
-    comment = models.CharField(max_length=254, blank=True, null=True)
-""""
-
-    #post = models.ManyToManyField(Post)
-    #post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    """
-
+    def __str__(self):
+        return 'Comment by {} on {}'.format(self.name, self.post)
 

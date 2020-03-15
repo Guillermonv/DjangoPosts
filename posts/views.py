@@ -8,20 +8,22 @@ from users.forms import ProfileForm
 from posts.forms import PostForm
 # Create your views here.
 from posts.models import Post
+from comments.models import Comment
 #from comment.models import Comment
 from django.core.exceptions import PermissionDenied
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-@login_required
+#@login_required
 def renderize(request):
    # import pdb; pdb.set_trace()
     posts = Post.objects.all().order_by('-created')
-    return render(request, os.path.join(BASE_DIR,'templates','posts','feed.html'), {'posts': posts})
+    comments = Comment.objects.all().order_by('-created')
+    return render(request, os.path.join(BASE_DIR,'templates','posts','feed.html'), {'posts': posts, 'comments':comments})
 
 
 from posts.models import User
-@login_required()
+#@login_required()
 def create_post(request):
     print('!!!!!!!!!!!')
     for key, value in request.POST.items():
@@ -50,22 +52,33 @@ def create_post(request):
         template_name='posts/new.html',
         context={
             'form': form,
-            'user': request.user,
-            'profiles': request.user.profiles
+            'user': request.user
+  #          'profiles': request.user.profiles
         })
 
 from django.core.mail import send_mail
-
+#No usar
 def comment_new(request):
-    if request.method == 'POST':   
-        message = request.POST['comment']
-        subject = request.POST['title']
-        user = request.POST['first_name']
-        last_name = request.POST['last_name']
+    if request.method == 'POST':
+        id = request.POST['user_id']
+        #subject = request.POST['title']
+        user = request.POST['username']
+       # last_name = request.POST['last_name']
+
         #lastname = request.POST['lastname']
-    
-        send_mail("[ENGLISH] " + subject,user +" "+ last_name + " said  "+ message + " on http://english.darwoft.com:8000", 'guillermo.varelli@gmail.com',
-            ['guillermo.varelli@darwoft.com'], fail_silently=False)
+        print('ITEMS')
+        for key, value in request.POST.items():
+            print(str(key) + "--")
+            print(str(value))
+        form = CommentForm(request.POST, request.FILES)
+   #     print formset.errors
+
+        if form.is_valid():
+            form.save()
+
+       # send_mail("[ENGLISH] " + subject,user +" "+ last_name + " said  "+ message + " on http://english.darwoft.com:8000", 'guillermo.varelli@gmail.com',
+       #     ['guillermo.varelli@darwoft.com'], fail_silently=False)
+
     posts = Post.objects.all().order_by('-created')
     return render(request, os.path.join(BASE_DIR,'templates','posts','feed.html'), {'posts': posts})
 

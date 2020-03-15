@@ -28,94 +28,85 @@ background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/b
                             <div class="media pt-3 pl-3 pb-1">
                                 <a href="{% url "users:detail" post.user.username%}">
                                     <img class="mr-3 rounded-circle" height="35" src="{{ post.profile.picture.url }}" alt="{{ post.user.username }}">
-                                </a>    
-                                <h3 class="card-title">{{ post.title }}</h3>                                                                
+                                </a>
+                                <h3 class="card-title">{{ post.title }}</h3>
                             </div>
-                                                 
-                                    <p class="card-text">{{ post.desc }}</p>                                                               
-                            
+
+                                    <p class="card-text">{{ post.desc }}</p>
+
                         </div>
                     </div>
                 <img style="width: 50%; heigth:60%" src="{{ post.photo.url }}" alt="{{ post.title }}">
 
                 <div class="media-body">
-                       <b> <p style="margin-top: 5px;">@{{ post.user.username  }} - <small>{{ post.created }}</small> 
+                       <b> <p style="margin-top: 5px;">@{{ post.user.username  }} - <small>{{ post.created }}</small>
                &nbsp;&nbsp;
                     <a href="" style="color: #000; font-size: 20px;">
                         <i class="far fa-heart"></i>
                     </a>
                     <br>
                 </p></b>
-                
+
 
 
                 </div>
 
-<!--
-    <hr>
-    {% for comment in post.comments.all %}
-    <div class="comment">
-        <div class="date">{{ comment.created_date }}</div>
-        <strong>{{ comment.author }}</strong>
-        <p>{{ comment.text|linebreaks }}</p>
-    </div>
+{% for comment in comments %}
+  <div class="comment">
+    <p class="info">
+     {% if comment.post_id == post.id %}
+      Comment by {{ comment.name }}
+      {{ comment.created }}
+    </p>
+    {{ comment.body|linebreaks }}
+     {% endif %}
+  </div>
 {% empty %}
-    <p>No comments here yet :(</p>
+  <p>There are no comments yet.</p>
 {% endfor %}
 
+        <form action="{% url 'posts:post_detail' %}" enctype="multipart/form-data" method="POST">
+                {% csrf_token %}
 
-
-
-
-
-
-            </div>
-llamar a comment_mew -->
-
-              <form action="{% url 'posts:comment_new' %}" method="POST" enctype="multipart/form-data">
-                            {% csrf_token %}
-
-                          <input
-                            class="form-control {% if form.title.errors %}is-invalid{% endif %}"
-                            type="hidden"
-                            name="title"
-                            value="{{post.title}}"
-                            size="16"
-                        >
-                        
                         <input
                         class="form-control {% if form.title.errors %}is-invalid{% endif %}"
-                        type="hidden"
-                        name="first_name "
-                        value="{{user.first_name}}"
+                        name="pk"
                         size="16"
-                    >
-                    <input
-                    class="form-control {% if form.title.errors %}is-invalid{% endif %}"
-                    type="hidden"
-                    name="last_name "
-                    value="{{user.last_name}}"
-                    size="16"
+                        type="hidden"
+                        value="{{post.id}}"
                 >
-                        <textarea rows="5" cols="50" name="comment"  style="width:50%;"
-                        value="{{ comments.comment }}" class="form-control" ></textarea>
-                        
-                         <!--   
-                           <input
-                            class="form-control {% if form.title.errors %}is-invalid{% endif %}"
-                            type="text"
-                            name="comment"
-                            placeholder="Comment"
-                            size="40"
-                            align="center"
-                            value="{{ comments.comment }}"
-                    /> -->
-                         </div>
-                         <br>
-                         
-                <button type="submit" style="width:35%; display:block;margin:auto;" class="btn btn-outline-info btn-lg">Publish</button>
-            
-                     </form>            {% endfor %}
+                <input
+                        class="form-control {% if form.title.errors %}is-invalid{% endif %}"
+                        name="title"
+                        size="16"
+                        type="hidden"
+                        value="{{post.title}}"
+                >
+
+                <input
+                        class="form-control {% if form.title.errors %}is-invalid{% endif %}"
+                        name="name"
+                        size="16"
+                        type="hidden"
+                        value="{{post.user.username}}" >
+                <input
+                        class="form-control {% if form.title.errors %}is-invalid{% endif %}"
+                        name="last_name "
+                        size="16"
+                        type="hidden"
+                        value="{{user.last_name}}"
+                >
+                <textarea class="form-control" cols="50" name="body" rows="5"
+                          style="width:50%;" value="{{ comment.body }}"></textarea>
+                <button class="btn btn-outline-info btn-lg" style="width:35%; display:block;margin:auto;" type="submit">
+                    Publish
+                </button>
+
+            </form>
+        </div>
+
+
+                {% endfor %}
         </div>
     </div>
 
