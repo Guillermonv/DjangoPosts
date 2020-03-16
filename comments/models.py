@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 class Comment(models.Model):
     post = models.ForeignKey(Post,on_delete=models.CASCADE, null=True, default=1, blank=True)
     name = models.CharField(max_length=20,blank=True, null=True)
+    surname = models.CharField(max_length=20,blank=True, null=True)
     email = models.EmailField(max_length=20,blank=True, null=True)
     body = models.TextField(max_length=200,blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True,blank=True, null=True)

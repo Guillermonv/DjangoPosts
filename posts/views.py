@@ -14,7 +14,7 @@ from django.core.exceptions import PermissionDenied
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-#@login_required
+@login_required
 def renderize(request):
    # import pdb; pdb.set_trace()
     posts = Post.objects.all().order_by('-created')
@@ -28,7 +28,7 @@ def create_post(request):
     print('!!!!!!!!!!!')
     for key, value in request.POST.items():
         if(key == 'user'):            
-            if(str(value) not in ['8','1']):
+            if(str(value) not in ['4','2','1']):
                 raise PermissionDenied()
         print('Key: %s' % (key))
         # print(f'Key: {key}') in Python >= 3.7

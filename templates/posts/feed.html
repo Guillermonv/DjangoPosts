@@ -27,11 +27,11 @@ background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/b
                         <div class="card-body">
                             <div class="media pt-3 pl-3 pb-1">
                                 <a href="{% url "users:detail" post.user.username%}">
-                                    <img class="mr-3 rounded-circle" height="35" src="{{ post.profile.picture.url }}" alt="{{ post.user.username }}">
+                                    <img class="mr-3 rounded-circle" height="50" src="{{ post.profile.picture.url }}" alt="{{ post.user.username }}">
                                 </a>
-                                <h3 class="card-title">{{ post.title }}</h3>
+                                <h3 style="margin-top:10px"class="card-title">{{ post.title }}</h3>
                             </div>
-
+			    
                                     <p class="card-text">{{ post.desc }}</p>
 
                         </div>
@@ -55,7 +55,7 @@ background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/b
   <div class="comment">
     <p class="info">
      {% if comment.post_id == post.id %}
-      Comment by {{ comment.name }}
+     Comment by {{ comment.name }} {{ comment.surname }}
       {{ comment.created }}
     </p>
     {{ comment.body|linebreaks }}
@@ -88,20 +88,18 @@ background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/b
                         name="name"
                         size="16"
                         type="hidden"
-                        value="{{post.user.username}}" >
-                <input
+			value="{{user.first_name}}">
+		 <input
                         class="form-control {% if form.title.errors %}is-invalid{% endif %}"
-                        name="last_name "
+                        name="surname"
                         size="16"
                         type="hidden"
-                        value="{{user.last_name}}"
-                >
+			value="{{user.last_name}}">
                 <textarea class="form-control" cols="50" name="body" rows="5"
                           style="width:50%;" value="{{ comment.body }}"></textarea>
-                <button class="btn btn-outline-info btn-lg" style="width:35%; display:block;margin:auto;" type="submit">
+                <button class="btn btn-outline-info btn-lg" style="width:50%; display:block;margin:center;" type="submit">
                     Publish
                 </button>
-
             </form>
         </div>
 

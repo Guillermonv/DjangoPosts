@@ -25,7 +25,7 @@ SECRET_KEY = 'ie2*!82$#zd)w0w!^m=q#tkf%vdobrvg1(0o4kq@re3%u*f)s5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ec2-18-223-113-184.us-east-2.compute.amazonaws.com']
 
 
 # Application definition
@@ -116,10 +116,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': '1s4',
        'PASSWORD': '1s4b3ll4',
-        'HOST': 'localhost',
+        #'HOST': 'localhost',
         'PORT': '3306',
-        'USER': 'root',
-       # 'HOST': 'database-1.cf8l9xy80cyd.us-east-2.rds.amazonaws.com',
+        'USER': 'admin',
+        'HOST': 'database-1.cf8l9xy80cyd.us-east-2.rds.amazonaws.com',
 
 
     }
@@ -185,14 +185,14 @@ AUTHENTICATION_BACKENDS = (
     "allauth.account.auth_backends.AuthenticationBackend",
 )
 
-SITE_ID = 1
+SITE_ID = 2
 
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '277837821889-o437h1fdd5e66dr06rk0u1rgv66ulptn.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'zGxyV3DQIS4y6zC2Kzu1Uv-i'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '277837821889-bfvehjv0hlg2k9garorfkf9gb8bnqooi.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'u2A7LfN6EJTFANdDEc4kVrGh'
 LOGIN_URL = '/users/login'
 
 LOGIN_REDIRECT_URL = '/'
