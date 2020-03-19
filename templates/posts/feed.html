@@ -23,15 +23,19 @@ background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/b
         <div class="row"style= "align:center">
             {% for post in posts %}
             <div class="col-sm-12 col-md-8 offset-md-4 mt-5 p-0 post-container,width:50%;">
-                    <div class="card" style="width: 32rem;width:50%;">
-                        <div class="card-body">
+                    <div class="card" style="width: 32rem;width:50%;background: #f9f7f7">
+                        <div class="card-body"style="padding:0rem">
                             <div class="media pt-3 pl-3 pb-1">
                                 <a href="{% url "users:detail" post.user.username%}">
-                                    <img class="mr-3 rounded-circle" height="50" src="{{ post.profile.picture.url }}" alt="{{ post.user.username }}">
+                                    <img height="50" src="{{ post.profile.picture.url }}" alt="{{ post.user.username }}">
                                 </a>
-                                <h3 style="margin-top:10px"class="card-title">{{ post.title }}</h3>
+	    <h3 style="margin-top:-3px;margin-left:6px;font-size:18px"class="card-title"><b>{{ post.title }}</b></h3>
                             </div>
-			    
+</div>
+		    </div>
+			    <div class="card" style="width: 32rem;width:50%;">
+                        <div class="card-body">
+
                                     <p class="card-text">{{ post.desc }}</p>
 
                         </div>
@@ -50,12 +54,14 @@ background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/b
 
 
                 </div>
+		<div class="card" style="width: 32rem;width:50%;">
+                        <div class="card-body">
 
 {% for comment in comments %}
   <div class="comment">
     <p class="info">
      {% if comment.post_id == post.id %}
-     Comment by {{ comment.name }} {{ comment.surname }}
+      {{ comment.name }} {{ comment.surname }}
       {{ comment.created }}
     </p>
     {{ comment.body|linebreaks }}
@@ -64,7 +70,8 @@ background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/b
 {% empty %}
   <p>There are no comments yet.</p>
 {% endfor %}
-
+			</div>
+		</div>
         <form action="{% url 'posts:post_detail' %}" enctype="multipart/form-data" method="POST">
                 {% csrf_token %}
 
@@ -95,7 +102,7 @@ background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/b
                         size="16"
                         type="hidden"
 			value="{{user.last_name}}">
-                <textarea class="form-control" cols="50" name="body" rows="5"
+                <textarea class="form-control" cols="50" name="body" rows="2"
                           style="width:50%;" value="{{ comment.body }}"></textarea>
                 <button class="btn btn-outline-info btn-lg" style="width:50%; display:block;margin:center;" type="submit">
                     Publish
