@@ -4,7 +4,7 @@
 {% block head_content %}
     <title>Darwoft</title>
 {% endblock%}
-
+	
 <style>
     zoom: 100%;
 
@@ -27,10 +27,13 @@ background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/b
                         <div class="card-body"style="padding:0rem">
                             <div class="media pt-3 pl-3 pb-1">
                                 <a href="{% url "users:detail" post.user.username%}">
-                                    <img height="50" src="{{ post.profile.picture.url }}" alt="{{ post.user.username }}">
+                                    <img style="border-radius: 50%; width: 50px;height: 50px;object-fit: cover;"height="50" src="{{ post.profile.picture.url }}" alt="{{ post.user.username }}">
                                 </a>
-	    <h3 style="margin-top:-3px;margin-left:6px;font-size:18px"class="card-title"><b>{{ post.title }}</b></h3>
+	    <h3 style="margin-top:0px;margin-left:6px;position:relative;font-size:16px" class="card-title"><b>{{ post.user.first_name }} {{post.user.last_name}}<br></b><br></h3><br> <br>
+	  
+	    <small style="margin-top:-3px;margin-left:57px;position:absolute;"><br>{{post.created}}</small>
                             </div>
+
 </div>
 		    </div>
 			    <div class="card" style="width: 32rem;width:50%;">
@@ -43,7 +46,18 @@ background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/b
                 <img style="width: 50%; heigth:60%" src="{{ post.photo.url }}" alt="{{ post.title }}">
 
                 <div class="media-body">
-                       <b> <p style="margin-top: 5px;">@{{ post.user.username  }} - <small>{{ post.created }}</small>
+    <button type="button" class="glyphicon glyphicon-comment" data-toggle="collapse" data-target="#demo"></button>                    
+ &nbsp;&nbsp;
+ &nbsp;&nbsp;
+ &nbsp;&nbsp;
+ &nbsp;&nbsp;
+               &nbsp;&nbsp;
+ &nbsp;&nbsp;
+ &nbsp;&nbsp;
+ &nbsp;&nbsp;
+ &nbsp;&nbsp;
+&nbsp;&nbsp;
+ &nbsp;&nbsp;
                &nbsp;&nbsp;
                     <a href="" style="color: #000; font-size: 20px;">
                         <i class="far fa-heart"></i>
@@ -54,7 +68,10 @@ background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/b
 
 
                 </div>
-		<div class="card" style="width: 32rem;width:50%;">
+
+  <div id="demo" class="collapse">
+    
+<div class="card" style="width: 32rem;width:50%;">
                         <div class="card-body">
 
 {% for comment in comments %}
@@ -70,7 +87,7 @@ background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/b
 {% empty %}
   <p>There are no comments yet.</p>
 {% endfor %}
-			</div>
+			</div>			</div>
 		</div>
         <form action="{% url 'posts:post_detail' %}" enctype="multipart/form-data" method="POST">
                 {% csrf_token %}
