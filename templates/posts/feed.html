@@ -7,7 +7,13 @@
 	
 <style>
     zoom: 100%;
-
+textarea {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 0 0 0 3px #000;
+    border: 5px solid transparent;
+}
 #bg{
     background-size: 1800px 900px;
     background-repeat: no-repeat;
@@ -119,7 +125,35 @@ background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/b
                         size="16"
                         type="hidden"
 			value="{{user.last_name}}">
-                <textarea class="form-control" cols="50" name="body" rows="2"
+ <script>
+		 function do_resize(textbox) {
+
+ var maxrows=10;
+  var txt=textbox.value;
+  var cols=textbox.cols;
+
+ var arraytxt=txt.split('\n');
+  var rows=arraytxt.length;
+
+ for (i=0;i<arraytxt.length;i++)
+  rows+=parseInt(arraytxt[i].length/cols);
+
+ if (rows>maxrows) textbox.rows=maxrows;
+  else textbox.rows=rows;
+ }
+$(function() {
+    $("form input").keypress(function (e) {
+        if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+            $('button[type=submit] .default').click();
+            return false;
+        } else {
+            return true;
+        }
+    });
+});
+</script>
+
+                <textarea id="textarea"class="form-control form-rounded"  onkeyup="new do_resize(this);" cols="50"  name="body"  rows="1"
                           style="width:50%;" value="{{ comment.body }}"></textarea>
                 <button class="btn btn-outline-info btn-lg" style="width:50%; display:block;margin:center;" type="submit">
                     Publish
