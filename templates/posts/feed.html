@@ -52,7 +52,7 @@ background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/b
                 <img style="width: 50%; heigth:60%" src="{{ post.photo.url }}" alt="{{ post.title }}">
 
                 <div class="media-body">
-    <button type="button" class="glyphicon glyphicon-comment" data-toggle="collapse" data-target="#demo"></button>                    
+			<button type="button" class="glyphicon glyphicon-comment" data-toggle="collapse" data-target="#comment{{post.id}}"></button>                    
  &nbsp;&nbsp;
  &nbsp;&nbsp;
  &nbsp;&nbsp;
@@ -75,7 +75,7 @@ background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/b
 
                 </div>
 
-  <div id="demo" class="collapse">
+		<div id="comment{{post.id}}" class="collapse">
     
 <div class="card" style="width: 32rem;width:50%;">
                         <div class="card-body">
