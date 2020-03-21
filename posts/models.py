@@ -9,7 +9,7 @@ class Post(models.Model):
    user = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
 
 
-   profile = models.ForeignKey('users.Profiles', on_delete=models.CASCADE, null=True, default=1, blank=True)
+   profile = models.ForeignKey('users.Profiles', on_delete=models.CASCADE,blank=True,null=True,default=0)
    title = models.CharField(max_length=100, blank=True, null=True)
    desc = models.CharField(max_length=1000, blank=True, null=True)
 
