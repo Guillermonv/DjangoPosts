@@ -52,8 +52,8 @@ def create_post(request):
         template_name='posts/new.html',
         context={
             'form': form,
-            'user': request.user
-  #          'profiles': request.user.profiles
+            'user': request.user,
+           'profiles': request.user.profiles
         })
 
 from django.core.mail import send_mail
