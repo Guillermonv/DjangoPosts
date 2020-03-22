@@ -26,7 +26,10 @@ width: 100%;" id="main_navbar" >
              <li class="nav-item">
                      <a href="{% url "users:detail" request.user.username%}">
                     {% if user.profiles.picture %}
-                     <img src=" {{user.profiles.picture.url}} " height="22"
+                     <img src=" {{user.profiles.picture.url}} " style ="border-radius: 50%;
+    width: 23px;
+    height: 23px;
+    object-fit: cover;"
                        class="rounded-circle align-top"/>
                     {% else %}
                        <img src="{% static  "img/profile.png"%}" height="22"
