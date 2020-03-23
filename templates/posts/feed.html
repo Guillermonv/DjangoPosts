@@ -50,14 +50,16 @@ background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/b
                         </div>
                     </div>
                 <img style="width: 50%; heigth:60%" src="{{ post.photo.url }}" alt="{{ post.title }}">
-
+		
                 <div class="media-body">
-			<button type="button" class="glyphicon glyphicon-comment" data-toggle="collapse" data-target="#comment{{post.id}}"></button>                    
+	&nbsp;&nbsp;
+			<button type="button" style="border:navajowhite;font-size:20px" class="far fa-comments" data-toggle="collapse" data-target="#comment{{post.id}}"></button>                    
+			
+
+		&nbsp;&nbsp;
  &nbsp;&nbsp;
  &nbsp;&nbsp;
  &nbsp;&nbsp;
- &nbsp;&nbsp;
-               &nbsp;&nbsp;
  &nbsp;&nbsp;
  &nbsp;&nbsp;
  &nbsp;&nbsp;
@@ -65,8 +67,22 @@ background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/b
 &nbsp;&nbsp;
  &nbsp;&nbsp;
                &nbsp;&nbsp;
-                    <a href="" style="color: #000; font-size: 20px;">
-                        <i class="far fa-heart"></i>
+	       0                  <a href="" style="color: green; font-size: 20px;">
+		       <i class="far fa-thumbs-up"></i></a>
+ &nbsp;&nbsp;
+ &nbsp;&nbsp;
+ &nbsp;&nbsp;
+ &nbsp;&nbsp;
+ &nbsp;&nbsp;
+ &nbsp;&nbsp;
+ &nbsp;&nbsp;
+ &nbsp;&nbsp;
+ &nbsp;
+&nbsp;0 &nbsp;
+<i class="fas fa-comment-alt-lines"></i> 
+                    <a href="" style="color: red; font-size: 20px;">
+                         <i class="far fa-thumbs-down"></i>
+			 
                     </a>
                     <br>
                 </p></b>
@@ -162,8 +178,9 @@ input.addEventListener("keyup", function(event) {
 </script>
 
                 <textarea id="textareacomment"class="form-control form-rounded"  onkeyup="new do_resize(this);" cols="50"  name="body"  rows="1"
-                          style="width:50%;" value="{{ comment.body }}"></textarea>
-                <button id="btncomment"class="btn btn-outline-info btn-lg" style="width:50%; display:block;margin:center;" type="submit">
+                          style="width:50%;border-radius:10rem" value="{{ comment.body }}"></textarea>
+		
+                <button id="btncomment"class="btn btn-outline-info btn-lg" style="visibility:hidden;width:50%; display:block;margin:center;" type="submit">
                     Publish
                 </button>
             </form>
