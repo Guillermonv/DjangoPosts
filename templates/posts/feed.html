@@ -7,6 +7,10 @@
 	
 <style>
     zoom: 100%;
+#container1{width:100%; }
+#left1{float:left;}
+#center1{text-align:center;}
+#right1{float:right;}	    
 textarea {
     width: 300px;
     height: 300px;
@@ -20,6 +24,7 @@ textarea {
     background-position: top;
     background-attachment: fixed;
 }
+
 </style>
 {% block container %}
 <body id="bg" style="zoom: 85%; background-position: center center; background-attachment: fixed;
@@ -52,41 +57,22 @@ background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/b
                 <img style="width: 50%; heigth:60%" src="{{ post.photo.url }}" alt="{{ post.title }}">
 		
                 <div class="media-body">
-	&nbsp;&nbsp;
-			<button type="button" style="border:navajowhite;font-size:20px" class="far fa-comments" data-toggle="collapse" data-target="#comment{{post.id}}"></button>                    
-			
+			<div id="container" style="width: 50%">
+  <div id="left"style="float:left">
+                          <button type="button" style="border:navajowhite;font-size:20px" class="fas fa-comments" data-toggle="collapse" data-target="#comment{{post.id}}"></button>              
+</div>
+  <div id="right"style="float:right"><i class="fas fa-comment-alt-lines"></i>
+                    0<a href="" style="color: red; font-size: 20px;">
+                         <i class="fas fa-thumbs-down"></i>
 
-		&nbsp;&nbsp;
- &nbsp;&nbsp;
- &nbsp;&nbsp;
- &nbsp;&nbsp;
- &nbsp;&nbsp;
- &nbsp;&nbsp;
- &nbsp;&nbsp;
- &nbsp;&nbsp;
-&nbsp;&nbsp;
- &nbsp;&nbsp;
-               &nbsp;&nbsp;
-	       0                  <a href="" style="color: green; font-size: 20px;">
-		       <i class="far fa-thumbs-up"></i></a>
- &nbsp;&nbsp;
- &nbsp;&nbsp;
- &nbsp;&nbsp;
- &nbsp;&nbsp;
- &nbsp;&nbsp;
- &nbsp;&nbsp;
- &nbsp;&nbsp;
- &nbsp;&nbsp;
- &nbsp;
-&nbsp;0 &nbsp;
-<i class="fas fa-comment-alt-lines"></i> 
-                    <a href="" style="color: red; font-size: 20px;">
-                         <i class="far fa-thumbs-down"></i>
-			 
-                    </a>
-                    <br>
-                </p></b>
-
+                    </a></div>
+  <div id="center"align="center">0                  <a href="" style="color: green; font-size: 20px;">
+                       <i class="fas fa-thumbs-up"></i></a>
+</div>
+			</div>
+                  
+		
+ 
 
 
                 </div>
