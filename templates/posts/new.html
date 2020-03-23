@@ -15,7 +15,7 @@ background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/b
     <div class="container" style="width=50%">
         <div class="row justify-content-md-center" style="width=50%" >
             <div class="col-12 pt-3 pb-3" id="profile-box">
-                <h4 class="mb-4">Post a new photo!</h4>
+                <h4 class="mb-4">Ingresa un nuevo topico</h4>
 
                 <form method="POST" enctype="multipart/form-data" style="width=50%">
                     {% csrf_token %}
@@ -24,13 +24,13 @@ background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/b
                     <input type="hidden" name="profile" value="{{ profiles.pk }}" />
                     <input type="hidden" name="post" value="1" />
                     {# Website field #}
-                    <div class="form-group">
-                        <input
+                    <div class="form-group"style="width=50%">
+ <!--                       <input
                             class="form-control {% if form.title.errors %}is-invalid{% endif %}"
                             type="text"
                             name="title"
                             placeholder="Title"
-                        >
+			    > -->
                         <div class="invalid-feedback">
                             {% for error in form.title.errors %}{{ error }}{% endfor %}
                         </div>

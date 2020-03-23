@@ -25,28 +25,26 @@ def renderize(request):
 from posts.models import User
 #@login_required()
 def create_post(request):
-    print('!!!!!!!!!!!')
+    
     for key, value in request.POST.items():
         if(key == 'user'):            
             if(str(value) not in ['4','2','1']):
                 raise PermissionDenied()
-        print('Key: %s' % (key))
-        # print(f'Key: {key}') in Python >= 3.7
-        print('Value %s' % (value))
+        
+
 
     """Create new post view."""            
   #  if(request.POST['user'] != 0):
    #   raise Exception('general exceptions not caught by specific handling')
     form = PostForm(request.POST, request.FILES)
-    print(form.fields)
+    
     if form.is_valid():
-        print('VAAAAAALLIDDD')
         form.save()
         return redirect('posts:feed')
 
     else:
         form = PostForm()
-        print('INVALIDDDD')
+
     return render(
         request=request,
         template_name='posts/new.html',

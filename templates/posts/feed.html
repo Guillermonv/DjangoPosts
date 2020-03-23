@@ -54,8 +54,9 @@ background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/b
 
                         </div>
                     </div>
+		    {% if post.photo.url != "/media/no-photo" %}
                 <img style="width: 50%; heigth:60%" src="{{ post.photo.url }}" alt="{{ post.title }}">
-		
+		    {% endif %}
                 <div class="media-body">
 			<div id="container" style="width: 50%">
   <div id="left"style="float:left">
@@ -158,16 +159,16 @@ var input = document.getElementById("textareacomment");
 input.addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
    event.preventDefault();
-   document.getElementById("btncomment").click();
+	  document.getElementById("btncomment").click();
   }
 });
 </script>
 
-                <textarea id="textareacomment"class="form-control form-rounded"  onkeyup="new do_resize(this);" cols="50"  name="body"  rows="1"
-                          style="width:50%;border-radius:10rem" value="{{ comment.body }}"></textarea>
+		<textarea id="textareacomment"class="form-control form-rounded"  onkeyup="new do_resize(this);" cols="50"  name="body"  rows="1"
+                          style="width:50%;" value="{{ comment.body }}"></textarea>
 		
-                <button id="btncomment"class="btn btn-outline-info btn-lg" style="visibility:hidden;width:50%; display:block;margin:center;" type="submit">
-                    Publish
+		<button id="btncomment"class="btn btn-outline-info btn-lg" style="width:50%; display:block;margin:center;" type="submit">
+                    Comenta
                 </button>
             </form>
         </div>
