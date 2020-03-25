@@ -14,6 +14,7 @@ class Post(models.Model):
    desc = models.CharField(max_length=1000, blank=True, null=True)
 
    photo = models.ImageField(upload_to='posts/photos',blank=True,null=True,default="no-photo")
+   video= models.FileField(upload_to='videos/', null=True, default="no-video")
 
    created = models.DateTimeField(auto_now_add=True)
    modified = models.DateTimeField(auto_now=True)
