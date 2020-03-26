@@ -26,10 +26,10 @@ from posts.models import User
 #@login_required()
 def create_post(request):
     
-    for key, value in request.POST.items():
-        if(key == 'user'):            
-            if(str(value) not in ['4','2','1']):
-                raise PermissionDenied()
+   # for key, value in request.POST.items():
+    #    if(key == 'user'):            
+     #       if(str(value) not in ['4','2','1']):
+      #          raise PermissionDenied()
         
 
 

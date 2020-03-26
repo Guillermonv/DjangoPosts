@@ -24,20 +24,11 @@ background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/b
                     <input type="hidden" name="profile" value="{{ profiles.pk }}" />
                     <input type="hidden" name="post" value="1" />
                     {# Website field #}
+                  
                     <div class="form-group"style="width=50%">
-                       <input
-                            class="form-control {% if form.title.errors %}is-invalid{% endif %}"
-                            type="file"
-                            name="video"
-                            placeholder="video"
-			    > 
-                        <div class="invalid-feedback">
-                            {% for error in form.title.errors %}{{ error }}{% endfor %}
-                        </div>
-                    </div>
-                    <div class="form-group">
                             <input
-                                class="form-control {% if form.desc.errors %}is-invalid{% endif %}"
+                               style="width=50%"			 	
+                               class="form-control {% if form.desc.errors %}is-invalid{% endif %}"
                                 type="text"
                                 name="desc"
                                 placeholder="description"
@@ -49,16 +40,35 @@ background-repeat:no-repeat;padding:5px; background-image: url('{% static "img/b
     
 
                     {# Photo field #}
-                    <div class="form-group">
-                        <label>Choose your photo:</label>
-                        <input
-                            class="form-control {% if form.photo.errors %}is-invalid{% endif %}"
+                    <div class="form-group" style="width=25% ;float:left">
+			   
+         
+                       <label for="image-input"> INGRESAR FOTO 
+    <img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png" width=50px height=50px />
+  </label>
+			<input
+	 		    style="visibility:hidden"
+                            id="image-input"
                             type="file"
                             name="photo"
                             placeholder="photo"
                         >
                         <div class="invalid-feedback">
                             {% for error in form.photo.errors %}{{ error }}{% endfor %}
+                        </div>
+                    </div>
+         <div class="form-group"style="width=25%;float:right">
+ <label for="video-input"> INGRESAR VIDEO
+    <img src="https://i.ya-webdesign.com/images/video-camera-vector-png-4.png" width=50px height=50px />
+  </label>
+		 <input     id="video-input"
+                        style="visibility:hidden"
+                            type="file"
+                            name="video"
+                            placeholder="video"
+                            >
+                        <div class="invalid-feedback">
+                            {% for error in form.title.errors %}{{ error }}{% endfor %}
                         </div>
                     </div>
 
